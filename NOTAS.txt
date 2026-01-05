@@ -39,3 +39,23 @@ npm run package-win
                          }
                      ]
 }
+
+== Publicar en Github
+# Inicializa el repositorio local si aún no lo habías hecho
+git init
+
+# Añade todos tus archivos al área de preparación
+git add .
+
+# Guarda los cambios localmente
+git commit -m "Mi primer commit"
+
+# Renombra la rama principal a 'main' (estándar actual de GitHub)
+git branch -M main
+
+# Conecta tu carpeta local con el repositorio de GitHub que creaste
+# (Pega aquí la URL que copiaste en el paso 1)
+git remote add origin https://github.com/tu-usuario/tu-proyecto.git
+
+# Sube tus archivos a la nube
+git push -u origin main
