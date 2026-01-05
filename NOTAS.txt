@@ -16,3 +16,26 @@ powershell -ExecutionPolicy Bypass -File .\ping_servers.ps1
     },
 == Crear un build de electron
 npm run package-win
+
+"CsProcessors":  [
+                         {
+                             "Name":  "13th Gen Intel(R) Core(TM) i9-13900KF",
+                             "Manufacturer":  "GenuineIntel",
+                             "Description":  "Intel64 Family 6 Model 183 Stepping 1",
+                             "Architecture":  9,
+                             "AddressWidth":  64,
+                             "DataWidth":  64,
+                             "MaxClockSpeed":  3000,
+                             "CurrentClockSpeed":  3000,
+                             "NumberOfCores":  24,
+                             "NumberOfLogicalProcessors":  32,
+                             "ProcessorID":  "BFEBFBFF000B0671",
+                             "SocketDesignation":  "U3E1",
+                             "ProcessorType":  3,
+                             "Role":  "CPU",
+                             "Status":  "OK",
+                             "CpuStatus":  1,
+                             "Availability":  3
+                         }
+                     ]
+}

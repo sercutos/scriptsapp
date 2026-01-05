@@ -16,6 +16,9 @@ async function loadView(view) {
     // Inicializar scripts específicos de la vista
     if (view === 'warp') initWarp();
     if (view === 'ping') initPing();
+    if (view === 'info') initInfo();
+    if (view === 'custom') initCustom();
+
     // Si agregas más vistas, inicialízalas aquí
   } catch (err) {
     mainContent.innerHTML = `<p class="text-danger">Error cargando la vista: ${err}</p>`;
@@ -120,4 +123,75 @@ function initPing() {
         "<tr><td colspan='3' class='text-danger'>Error ejecutando ping</td></tr>";
     }
   };
+}
+
+// =====================================
+// Función: Ping Servers
+// =====================================
+function initInfo() {
+  const runBtn3 = document.getElementById("runBtn3");
+  const tableBody = document.querySelector("#infoTable tbody");
+
+  if (!runBtn3 || !tableBody) return;
+
+  runBtn3.onclick = async () => {
+    tableBody.innerHTML = "<tr><td colspan='2' class='text-center'>Consultando a Saruman...</td></tr>";
+
+    try {
+      const result = await window.electronAPI.runPS("getinfocomputer.ps1");
+      const item = JSON.parse(result.trim()); // Es un objeto directo {...}
+
+      tableBody.innerHTML = ""; // Limpiar
+
+      // --- SECCIÓN 1: DATOS GENERALES ---
+      const generalData = [
+        { label: "Nombre del Host", value: item.CsName },
+        { label: "Sistema Operativo", value: item.OsName },
+        { label: "Versión", value: `${item.WindowsProductName} (${item.OsVersion})` },
+        { label: "Memoria RAM", value: `${(item.CsTotalPhysicalMemory / 1073741824).toFixed(2)} GB` },
+        { label: "Último Inicio", value: formatDate(item.OsLastBootUpTime) }
+      ];
+
+      addSectionTitle(tableBody, "Información del Sistema");
+      generalData.forEach(data => addRow(tableBody, data.label, data.value));
+
+      // --- SECCIÓN 2: PROCESADOR (Accediendo al array CsProcessors) ---
+      if (item.CsProcessors && item.CsProcessors.length > 0) {
+        addSectionTitle(tableBody, "Procesador");
+        const cpu = item.CsProcessors[0]; // Tomamos el primer procesador
+        
+        addRow(tableBody, "Modelo", cpu.Name);
+        addRow(tableBody, "Núcleos Físicos", cpu.NumberOfCores);
+        addRow(tableBody, "Hilos Lógicos", cpu.NumberOfLogicalProcessors);
+        addRow(tableBody, "Velocidad Máx", `${cpu.MaxClockSpeed} MHz`);
+      }
+
+    } catch (err) {
+      console.error("Error:", err);
+      tableBody.innerHTML = `<tr><td colspan='2' class='text-danger'>Error: ${err.message}</td></tr>`;
+    }
+  };
+}
+
+// Funciones auxiliares para mantener el código limpio
+function addRow(table, label, value) {
+  const row = document.createElement("tr");
+  row.innerHTML = `<td class="fw-bold text-secondary" style="width: 40%">${label}</td><td>${value ?? 'N/A'}</td>`;
+  table.appendChild(row);
+}
+
+function addSectionTitle(table, title) {
+  const row = document.createElement("tr");
+  row.innerHTML = `<td colspan="2" class="table-dark text-center fw-bold">${title}</td>`;
+  table.appendChild(row);
+}
+
+function formatDate(psDate) {
+  if (!psDate) return "N/A";
+  // Procesa el formato \/Date(MS)\/ que te devuelve PowerShell
+  const ticks = parseInt(psDate.replace(/\D/g, ""));
+  return new Date(ticks).toLocaleString();
+}
+function initCustom() {
+  console.log("Botón CUSTOM pulsado");
 }

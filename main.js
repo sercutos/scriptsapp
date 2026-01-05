@@ -1,3 +1,4 @@
+const pkg = require('./package.json');
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const { exec } = require("child_process");
@@ -6,11 +7,13 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    title: pkg.name,
     icon: path.join(__dirname, 'assets/favicon.ico'),    
     webPreferences: {
       contextIsolation: true,
       nodeIntegration: false,
-      preload: path.join(__dirname, "preload.js")
+      preload: path.join(__dirname, "preload.js"),
+      additionalArguments: [`--appName=${pkg.name}`]
     }
   });
 

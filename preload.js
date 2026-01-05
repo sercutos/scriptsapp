@@ -1,13 +1,8 @@
 const { contextBridge, ipcRenderer } = require('electron');
 
-// Intentamos obtener el nombre de forma segura
-let appName = "ScriptsApp"; 
-try {
-  const pkg = require('./package.json');
-  appName = pkg.name;
-} catch (e) {
-  console.error("No se pudo leer package.json en el preload:", e);
-}
+// Buscamos el argumento en el array de argumentos del proceso
+const appNameArg = process.argv.find(arg => arg.startsWith('--appName='));
+const appName = appNameArg ? appNameArg.split('=')[1] : "ScriptsApp";
 
 contextBridge.exposeInMainWorld('electronAPI', {
   name: appName,
