@@ -1,0 +1,42 @@
+{
+  "name": "ScriptsApp",
+  "version": "1.0.0",
+  "description": "A Electron application Powershell manager",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "package-win": "electron-packager . Diskr --platform=win32 --arch=x64 --out=dist --overwrite --asar=false"    
+  },
+  "repository": "https://github.com/electron/minimal-repro",
+  "homepage": "https://github.com/sercutos/",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": {
+    "name": "scubero",
+    "email": "sergio.cubero@gmail.com"
+  },
+  "icon": "assets/favicon.ico",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^39.2.7",
+    "electron-packager": "^17.1.2"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.13.1"
+  },
+  "build": {
+    "productName": "ScriptsApp",
+    "win": {
+      "icon": "assets/favicon.ico"
+    },
+    "directories":{
+      "buildResources": "assets"
+    }
+  }
+}

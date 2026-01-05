@@ -1,0 +1,4 @@
+# Dependencias
+node_modules
+# Carpeta de compilación/empaquetado
+dist/

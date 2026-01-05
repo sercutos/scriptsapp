@@ -1,0 +1,23 @@
+/* Asegura que el sidebar tenga fondo negro completo */
+.sidebar {        
+  background-color: #01497c; /* azul oscuro armonioso */
+  min-height: 100vh;
+}
+
+/* Forzar texto blanco en todo el sidebar */
+.sidebar .nav-link,
+.sidebar a,
+.sidebar span {
+  color: #fff !important;
+}
+   
+
+.nav-link.active {
+  background-color: #0275d8; /* azul principal */
+  color: #fff;
+}
+
+.nav-link:hover {
+  background-color: #5bc0de; /* azul claro hover */
+  color: #fff;
+}

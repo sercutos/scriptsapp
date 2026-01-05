@@ -1,0 +1,18 @@
+# Bootstrap
+npm install bootstrap
+npm install bootstrap-icons
+npm install bootstrap@5.3.3 
+# Test-Power.psq
+
+{"CanWarp":false,"GigaWatts":1}
+
+# ping_servers.ps1
+
+powershell -ExecutionPolicy Bypass -File .\ping_servers.ps1
+    {
+        "ip":  "127.0.0.1",
+        "estado":  "OK",
+        "latencia_ms":  0
+    },
+== Crear un build de electron
+npm run package-win
