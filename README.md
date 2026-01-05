@@ -1,9 +1,16 @@
 # Scripts PowerShell
 
+Useful desktop application to manage repetitive tasks in Windows Systems.
+
+![Texto alternativo](assets/01.png)
+
 **Scripts.**
 
-> [!NOTE]
 > PING
+
+Test a list of host using ping command. The file of servers is in scipts folders: `servers.csv`
+
+![Texto alternativo](assets/ping.png)
 
 A basic Electron application contains:
 
@@ -11,12 +18,15 @@ A basic Electron application contains:
 - `main.js` - S
 - `index.html` - A 
 - `preload.js` - A 
-> INFO
+> INFO Computer
+Get info of local computer.
+![Texto alternativo](assets/info.png)
+
 ## Install
 
 ```bash
 # Clone this repository
-git clone https://github.com/electron/minimal-repro
+git clone https://github.com/sercutos/scriptsapp
 # Go into the repository
 cd ScriptsApp
 # Install dependencies
@@ -25,11 +35,11 @@ npm install
 npm start
 ```
 
-## USO
+> USO
 
-![Texto alternativo](assets/01.png)
-![Texto alternativo](assets/ping.png)
-![Texto alternativo](assets/info.png)
+
+
+
 
 
 
