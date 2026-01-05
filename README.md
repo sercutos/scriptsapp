@@ -29,7 +29,7 @@ npm start
 
 ![Texto alternativo](assets/01.png)
 ![Texto alternativo](assets/ping.png)
-![Texto alternativo](assets/ing.png)
+![Texto alternativo](assets/info.png)
 
 
 
