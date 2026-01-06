@@ -1,14 +1,12 @@
+
 $ProgressPreference = 'SilentlyContinue'
 $ErrorActionPreference = 'Stop'
-# Ruta del CSV
-#$rutaCsv = "servers.csv"
-#$rutaCsv = Join-Path $PSScriptRoot "servers.csv"
 
+# Ruta del CSV
 $scriptDir = $PSScriptRoot
 $rutaCsv = Join-Path $scriptDir "servers.csv"
 
 # Leer el CSV
-#$datos = Import-Csv $rutaCsv
 $datos = Import-Csv $rutaCsv
 
 $resultados = @()
