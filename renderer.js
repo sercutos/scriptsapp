@@ -195,3 +195,9 @@ function formatDate(psDate) {
 function initCustom() {
   console.log("Botón CUSTOM pulsado");
 }
+// =====================================
+// Función: Install Software
+// =====================================
+function initSoftware() {
+    console.log("Botón Software pulsado")
+}
